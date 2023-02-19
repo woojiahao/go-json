@@ -1,0 +1,23 @@
+{
+  "name": "James Peterson",
+  "age": 37,
+  "address": {
+    "line1": "Block 78 Woodgrove Avenue 5",
+    "line2": "Unit #05-111",
+    "postal": "654378"
+  },
+  "pets": [
+    {
+      "name": "Lex",
+      "kind": "Dog",
+      "age": 4,
+      "color": "Gray"
+    },
+    {
+      "name": "Faye",
+      "kind": "Cat",
+      "age": 6,
+      "color": "Orange"
+    }
+  ]
+}

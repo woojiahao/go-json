@@ -1,0 +1,11 @@
+{
+  "name": "John Doe",
+  "age": 22,
+  "email": "johndoe@email.com",
+  "phone": "(+65) 9876 5432",
+  "hobbies": [
+    "Climbing",
+    "Running",
+    "Reading"
+  ]
+}
