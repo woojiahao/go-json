@@ -2,6 +2,7 @@ package examples
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/go-playground/validator/v10"
 	"log"
 	"os"
@@ -26,7 +27,7 @@ func ValidateBadUser() {
 		log.Fatalf("Unable to marshal JSON due to %s", err)
 	}
 
-	log.Printf("User before validation: %v\n", user)
+	fmt.Printf("User before validation: %v\n", user)
 
 	err = validator.New().Struct(user)
 	if err != nil {
@@ -46,12 +47,12 @@ func ValidateGoodUser() {
 		log.Fatalf("Unable to marshal JSON due to %s", err)
 	}
 
-	log.Printf("User before validation: %v\n", user)
+	fmt.Printf("User before validation: %v\n", user)
 
 	err = validator.New().Struct(user)
 	if err != nil {
 		log.Fatalf("Validation failed due to %v\n", err)
 	}
 
-	log.Printf("User after validation: %v\n", user)
+	fmt.Printf("User after validation: %v\n", user)
 }

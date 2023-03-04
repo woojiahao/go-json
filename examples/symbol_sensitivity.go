@@ -2,6 +2,7 @@ package examples
 
 import (
 	"encoding/json"
+	"fmt"
 	"log"
 )
 
@@ -12,5 +13,5 @@ func SymbolSensitivity() {
 	if err != nil {
 		log.Fatalf("Unable to marshal JSON due to %s", err)
 	}
-	log.Printf("%s is a %d years old %s who likes %s\n", dog.Name, dog.Age, dog.Breed, dog.FavoriteTreat)
+	fmt.Printf("%s is a %d years old %s who likes %s\n", dog.Name, dog.Age, dog.Breed, dog.FavoriteTreat)
 }

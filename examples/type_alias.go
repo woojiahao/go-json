@@ -2,6 +2,7 @@ package examples
 
 import (
 	"encoding/json"
+	"github.com/sanity-io/litter"
 	"log"
 )
 
@@ -20,5 +21,5 @@ func TypeAlias() {
 	if err != nil {
 		log.Fatalf("Unable to marshal JSON due to %s", err)
 	}
-	log.Printf("%v\n", tas)
+	litter.Dump(tas)
 }

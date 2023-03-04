@@ -2,6 +2,7 @@ package examples
 
 import (
 	"encoding/json"
+	"github.com/sanity-io/litter"
 	"log"
 	"os"
 )
@@ -39,5 +40,5 @@ func ComplexJson() {
 	if err != nil {
 		log.Fatalf("Unable to marshal JSON due to %s", err)
 	}
-	log.Printf("%v\n", person)
+	litter.Dump(person)
 }

@@ -1,24 +1,31 @@
 package examples
 
 import (
-	"github.com/knadh/koanf/parsers/json"
-	file "github.com/knadh/koanf/providers/file"
-	"github.com/knadh/koanf/v2"
+	"encoding/json"
+	"github.com/sanity-io/litter"
 	"log"
+	"os"
 )
 
-var K = koanf.New(".")
+type BookConfiguration struct {
+	Title        string `json:"title"`
+	Author       string `json:"author"`
+	Description  string `json:"description"`
+	ChapterCount int    `json:"chapter_count"`
+}
+
+var Configuration BookConfiguration
 
 func ReadConfig() {
-	if err := K.Load(file.Provider("assets/config.json"), json.Parser()); err != nil {
-		log.Fatalf("Failed to read configuration due to %s\n", err)
+	b, err := os.ReadFile("assets/config.json")
+	if err != nil {
+		log.Fatalf("Unable to read file due to %s\n", err)
 	}
 
-	log.Printf(
-		"Title \"%s\" is written by %s and it is described to be\n\t%s\nIt contains %0.f chapters\n",
-		K.Get("title"),
-		K.Get("author"),
-		K.Get("description"),
-		K.Get("chapter_count"),
-	)
+	err = json.Unmarshal(b, &Configuration)
+	if err != nil {
+		log.Fatalf("Unable to marshal JSON due to %s", err)
+	}
+
+	litter.Dump(Configuration)
 }

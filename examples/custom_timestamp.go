@@ -49,7 +49,7 @@ func CustomTimestamp() {
 		log.Fatalf("Unable to unmarshal due to %s\n", err)
 	}
 
-	log.Printf("Baby %s (%s) was born on %v\n", baby.Name, baby.Gender, baby.BirthDate)
+	fmt.Printf("Baby %s (%s) was born on %v\n", baby.Name, baby.Gender, baby.BirthDate)
 
 	if err := os.WriteFile("assets/baby.json", input, 0666); err != nil {
 		log.Fatalf("Unable to save file due to %s\n", err)

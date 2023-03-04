@@ -2,6 +2,7 @@ package examples
 
 import (
 	"encoding/json"
+	"github.com/sanity-io/litter"
 	"log"
 	"os"
 )
@@ -25,7 +26,7 @@ func StructTagsUnmarshal() {
 		log.Fatalf("Unable to marshal JSON due to %s", err)
 	}
 
-	log.Printf("%v\n", coffee)
+	litter.Dump(coffee)
 }
 
 func StructTagsMarshal() {

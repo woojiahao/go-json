@@ -2,6 +2,7 @@ package examples
 
 import (
 	"encoding/json"
+	"fmt"
 	"log"
 )
 
@@ -21,5 +22,5 @@ func StructToText() {
 		log.Fatalf("Unable to marshal due to %s\n", err)
 	}
 
-	log.Println(string(b))
+	fmt.Println(string(b))
 }
