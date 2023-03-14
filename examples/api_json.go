@@ -14,8 +14,6 @@ type Login struct {
 	Password string `json:"password" validate:"required"`
 }
 
-type Response map[string]interface{}
-
 func BindBody(body io.ReadCloser, target any) error {
 	contents, err := io.ReadAll(body)
 	if err != nil {
@@ -30,6 +28,8 @@ func BindBody(body io.ReadCloser, target any) error {
 	return validator.New().Struct(target)
 }
 
+type Response map[string]interface{}
+
 func JSON(response Response) []byte {
 	j, err := json.Marshal(response)
 	if err != nil {
@@ -43,12 +43,14 @@ func StartServer() {
 	http.HandleFunc("/request", func(writer http.ResponseWriter, request *http.Request) {
 		var login Login
 		if err := BindBody(request.Body, &login); err != nil {
+			writer.WriteHeader(http.StatusBadRequest)
 			_, _ = writer.Write(JSON(Response{
 				"message": "Invalid login request",
 			}))
 			return
 		}
 
+		writer.WriteHeader(http.StatusOK)
 		_, _ = writer.Write(JSON(Response{
 			"message": fmt.Sprintf("Welcome back %s", login.Username),
 		}))
